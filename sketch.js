@@ -7,14 +7,15 @@ var spriteSubNames = ['idle', 'up', 'right', 'down', 'left'];
 var sprites = [];
 var bg;
 var grassImg;
+var houseImg;
 
+//Loading all assets
 function preload() {
 	for (var i of spriteSubNames) {
 		if (i !== "idle") {
 			for (var j = 0; j < 4; j++) {
 				name = spriteNames[0] + "_" + i + j
 				filename = "../raw/" +spriteNames[0] + "/" + name + ".png";
-				// IH.loadImage(filename, name);
 				sprites.push(loadImage(filename));
 			}
 		} else {
@@ -28,6 +29,7 @@ function preload() {
 
 	bg = loadImage("../raw/grass_bg.png");
 	grassImg = loadImage("../raw/grass.png");
+	houseImg = loadImage("../raw/house.png");
 }
 
 function setup() {
@@ -37,12 +39,15 @@ function setup() {
 		'grass': {
 			'img': grassImg,
 			'n': width/10,
-			'r': int(grassImg.width/2)
+		},
+		'house': {
+			'img': houseImg,
+			'n': 1
 		}
 	}
 	environManager = new EnvironmentManager(environImgsObj);
 
-	player = new Player(createVector(100, 100), 25, 1);
+	player = new Player(createVector(width/2, height/2), 25, 1);
 }
 
 function draw() {
@@ -63,5 +68,5 @@ function drawBackground() {
 }
 
 function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
+ 	resizeCanvas(windowWidth, windowHeight);
 }

@@ -13,9 +13,12 @@ class EnvironmentManager {
 		this.environImgs = environImgs;
 		this.names = Object.keys(this.environImgs);
 
-		this.instantiateObject("grass", this.environImgs.grass.n,
+		this.instantiateObject('grass', this.environImgs.grass.n,
 										this.environImgs.grass.img.width,
 										this.environImgs.grass.img.height);
+		this.instantiateObject('house', this.environImgs.house.n,
+										this.environImgs.house.img.width,
+										this.environImgs.house.img.height);
 	}
 
 	render() {
@@ -33,8 +36,8 @@ class EnvironmentManager {
 		this.environImgs[name].x = [];
 		this.environImgs[name].y = [];
 		for (var i = 0; i < n; i++) {
-			var x = w * floor(random(0, width/w));
-			var y = h * floor(random(0, height/h));
+			var x = w * floor(random(0, width/w - 1));
+			var y = h * floor(random(0, height/h - 1));
 
 			this.environImgs[name].x.push(x);
 			this.environImgs[name].y.push(y);
